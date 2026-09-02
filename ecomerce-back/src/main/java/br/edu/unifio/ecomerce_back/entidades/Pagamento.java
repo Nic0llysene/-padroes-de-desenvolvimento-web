@@ -1,13 +1,14 @@
 package br.edu.unifio.ecomerce_back.entidades;
 
 import java.math.BigDecimal;
-//import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,23 +16,17 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Produto {
+public class Pagamento {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-   private Integer id;
+    private Integer id;
 
-   private String nome;
+    private BigDecimal valor;
+    private LocalDateTime data;
+    private String status;
+    private String tipo;
+    @OneToOne
+    private Pedido pedido;
 
-   private String descricao;
-
-   private Short estoque;
-
-   private BigDecimal preco;
-
-   //private LocalDate validade;
-
-   @ManyToOne
-   private Categoria categoria; //categoria_id
-
-
+    
 }
